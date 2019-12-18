@@ -5,7 +5,9 @@ defmodule TriageWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", TriageWeb do
+  scope "/api/v1", TriageWeb do
     pipe_through :api
+      get "/symptoms", SymptomsController, :index
+      get "/symptoms/:id", SymptomsController, :show
   end
 end

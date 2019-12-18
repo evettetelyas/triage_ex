@@ -2,12 +2,11 @@ defmodule Triage.Repo.Migrations.AddSymptomsTable do
   use Ecto.Migration
 
   def change do
-    create table(:symptoms, primary_key: false) do
-      add :sid, :string, primary_key: true
+    create table(:symptoms) do
+      add :sid, :string
       add :name, :string
       add :common_name, :string
       add :sex_filter, :string
-      add :category, :string
       add :seriousness, :string
       add :location, :string
 

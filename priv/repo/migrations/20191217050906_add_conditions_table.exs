@@ -2,8 +2,8 @@ defmodule Triage.Repo.Migrations.AddConditionsTable do
   use Ecto.Migration
 
   def change do
-    create table(:conditions, primary_key: false) do
-      add :cid, :string, primary_key: true
+    create table(:conditions) do
+      add :cid, :string
       add :name, :string
       add :common_name, :string
       add :sex_filter, :string
@@ -12,7 +12,7 @@ defmodule Triage.Repo.Migrations.AddConditionsTable do
       add :acuteness, :string
       add :severity, :string
       add :icd10_code, :string
-      add :hint, :string
+      add :hint, :text
       add :triage_level, :string
 
       timestamps()

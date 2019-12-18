@@ -2,7 +2,7 @@ defmodule Triage.Condition do
 	use Ecto.Schema
 	import Ecto.Changeset
 	
-	schema "condition" do
+	schema "conditions" do
 		field :cid, :string
 		field :name, :string
 		field :common_name, :string
@@ -14,6 +14,8 @@ defmodule Triage.Condition do
 		field :icd10_code, :string
 		field :hint, :string
 		field :triage_level, :string
+
+		timestamps()
 	end
   
 	def changeset(struct, params \\ %{}) do

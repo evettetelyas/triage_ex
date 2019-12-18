@@ -1,16 +1,16 @@
-defmodule Mix.Tasks.Import do
+defmodule Mix.Tasks.Conditions do
   use Mix.Task
-  use Ecto.Schema
   alias Triage.Repo
   alias Triage.Condition
 
-	@shortdoc "import symptoms and conditions to db"
+	@shortdoc "import conditions to db"
 
-	def run(_) do
+  def run(_) do
+    Mix.Task.run("app.start")
 	  {:ok, condition_data} = File.read("./priv/repo/raw_data/conditions.json")
     raw = Poison.decode!(condition_data)
     Enum.each(raw, fn condition -> 
-      Triage.Condition.changeset(%Condition{}, %{cid: condition["id"], 
+      Condition.changeset(%Condition{}, %{cid: condition["id"], 
                                   name: condition["name"], 
                                   common_name: condition["common_name"],
                                   sex_filter: condition["sex_filter"],
@@ -22,8 +22,7 @@ defmodule Mix.Tasks.Import do
                                   hint: condition["extras"]["hint"],
                                   triage_level: condition["triage_level"]
                                   })
-      |> Repo.insert
-      |> IO.inspect
+      |> Repo.insert(returning: [:cid])
     end)
 	end
 end
