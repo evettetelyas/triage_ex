@@ -9,5 +9,7 @@ defmodule TriageWeb.Router do
     pipe_through :api
       get "/symptoms", SymptomsController, :index
       get "/symptoms/:id", SymptomsController, :show
+      get "/conditions", ConditionsController, :index
+      get "/conditions/:id", ConditionsController, :show
   end
 end

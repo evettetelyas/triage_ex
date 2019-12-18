@@ -1,7 +1,7 @@
 defmodule Mix.Tasks.Conditions do
   use Mix.Task
   alias Triage.Repo
-  alias Triage.Condition
+  alias Triage.Conditions.Condition
 
 	@shortdoc "import conditions to db"
 

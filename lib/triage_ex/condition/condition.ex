@@ -1,4 +1,4 @@
-defmodule Triage.Condition do
+defmodule Triage.Conditions.Condition do
 	use Ecto.Schema
 	import Ecto.Changeset
 	
